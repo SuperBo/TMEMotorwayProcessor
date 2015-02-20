@@ -56,7 +56,7 @@ void showFrames (TMEMotorwayProcessor& processor)
 int main(int argc, const char * argv[]) {
     
     // Full path to the location of your TME Motorway Dataset
-    string datasetPath = "/Users/tomrunia/Development/TomTom/cpp/TMEMotorwayProcessor/Dataset/";
+    string datasetPath = "../data/";
     
     // Choose a sequence type (Daylight/Sunset) and a sequence number
     SequenceType sequenceType = DAYLIGHT;
