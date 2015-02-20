@@ -8,6 +8,14 @@
 
 #include <iostream>
 
+#include "Utilities.h"
+#include "TMEMotorwayProcessor.h"
+
+void convertImagesToRGB ()
+{
+    // todo
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
