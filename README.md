@@ -15,7 +15,7 @@ The first 50 images are provided in this repository for testing purposes. Howeve
 
 1. Download images of the TME Motorway Dataset (http://cmp.felk.cvut.cz/data/motorway/) and put them in the `data` directory.
 2. Change the `datasetPath` in `main.cpp` so it points to the location of your dataset
-3. Convert the images from Bayer format to RGB
+3. Convert the images from Bayer format to RGB using `convertImagesToRGB()`
 4. Run the program, do your detections and compare bounding box overlap
 
 # Credits
