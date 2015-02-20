@@ -9,7 +9,14 @@ The “Toyota Motor Europe (TME) Motorway Dataset” is composed by 28 clips for
 - Boost 1.56.0
 
 # Usage
-You have to download the TME Motorway Dataset yourself (http://cmp.felk.cvut.cz/data/motorway/). The first 50 images are provided in this repository for testing purposes. However you need to add the rest of the images to the correct paths yourself. There are seperate directories for the DAYLIGHT and SUNSET video sequences and the ground truth annotations are also splitted into these two subsets. After downloading the TME Motorway Dataset you can convert all the images from BayerRB to RGB images using the `convertImagesToRGB()` method.
+You have to download the TME Motorway Dataset yourself (http://cmp.felk.cvut.cz/data/motorway/). 
+
+The first 50 images are provided in this repository for testing purposes. However you need to add the rest of the images to the correct paths yourself. There are seperate directories for the DAYLIGHT and SUNSET video sequences and the ground truth annotations are also splitted into these two subsets. After downloading the TME Motorway Dataset you can convert all the images from BayerRB to RGB images using the `convertImagesToRGB()` method.
+
+1. Download images of the TME Motorway Dataset (http://cmp.felk.cvut.cz/data/motorway/). Please note that you need to request the password for the archive to untar it. After downloading the images, put them in the `data` directory.
+2. Change the `datasetPath` in `main.cpp` so it points to the location of your dataset
+3. Convert the images from Bayer format to RGB
+4. Run the program, do your detections and compare bounding box overlap
 
 # Credits
 Many thanks to Claudio Caraffi (and others) for creating the TME Motorway Dataset. Also the conversion of screen coordinates to world coordinates is mainly copied from the evaluation code they provide. 
