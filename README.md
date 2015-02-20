@@ -19,6 +19,6 @@ The first 50 images are provided in this repository for testing purposes. Howeve
 4. Run the program, do your detections and compare bounding box overlap
 
 # Credits
-Many thanks to Claudio Caraffi (and others) for creating the TME Motorway Dataset. Also the conversion of screen coordinates to world coordinates is mainly copied from the evaluation code they provide. 
+Many thanks to Claudio Caraffi (and others) for creating the TME Motorway Dataset. Also the conversion of screen coordinates to world coordinates for the ground truth bounding boxes is mainly copied from the evaluation code they provide. 
 
 
