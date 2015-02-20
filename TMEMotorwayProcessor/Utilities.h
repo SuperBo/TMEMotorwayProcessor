@@ -1,12 +1,12 @@
 //
 //  Utilities.h
-//  VisionProject
+//  TMEMotorwayProcessor
 //
 //  Created by Tom Runia on 07/02/15.
 //
 
-#ifndef __VisionProject__Utilities__
-#define __VisionProject__Utilities__
+#ifndef __TMEMotorwayProcessor__Utilities__
+#define __TMEMotorwayProcessor__Utilities__
 
 #include <iostream>
 #include <iomanip>
@@ -34,4 +34,4 @@ namespace utilities
     void getFilesInDirectory(const string& directory, vector<string>& fileNames, const string& validExtension);
 }
 
-#endif /* defined(__VisionProject__Utilities__) */
+#endif

@@ -1,12 +1,12 @@
 //
 //  TMEMotorwayProcessor.h
-//  VisionProject
+//  TMEMotorwayProcessor
 //
 //  Created by Tom Runia on 16/02/15.
 //
 
-#ifndef __VisionProject__TMEMotorwayProcessor__
-#define __VisionProject__TMEMotorwayProcessor__
+#ifndef __TMEMotorwayProcessor__TMEMotorwayProcessor__
+#define __TMEMotorwayProcessor__TMEMotorwayProcessor__
 
 #include <iostream>
 #include <fstream>
@@ -163,4 +163,4 @@ private:
     
 };
 
-#endif /* defined(__VisionProject__TMEMotorwayProcessor__) */
+#endif /* defined(__TMEMotorwayProcessor__TMEMotorwayProcessor__) */

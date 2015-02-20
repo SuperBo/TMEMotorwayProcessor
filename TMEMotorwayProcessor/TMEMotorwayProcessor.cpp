@@ -1,6 +1,6 @@
 //
 //  TMEMotorwayProcessor.cpp
-//  VisionProject
+//  TMEMotorwayProcessor
 //
 //  Created by Tom Runia on 16/02/15.
 //
@@ -19,7 +19,11 @@ void TMEMotorwayProcessor::initSequence(const SequenceType &_sequenceType, const
     
     string imageDirectory = getImageDirectory();
     getFilesInDirectory(imageDirectory, imageFiles, "png");
-    assert(!imageFiles.empty());
+    
+    if (imageFiles.empty()) {
+        cout << "Unable to read sequence...EXIT" << endl;
+        return;
+    }
     
     // Read calibration parameters (now hardcoded, but can be read from calibration.ini)
     readCalibrationParameters();
