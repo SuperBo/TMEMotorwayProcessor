@@ -58,7 +58,7 @@ void TMEMotorwayProcessor::readGroundTruths()
     int gtCount = 0;
 
     // There are 2 GT files: Daylight and Sunset
-    string gtFilename = getGrountTruthFilename();
+    string gtFilename = getGroundTruthFilename();
     ifstream gtFile (gtFilename);
 
     if (!gtFile.is_open()) {
@@ -312,7 +312,7 @@ void TMEMotorwayProcessor::getGroundTruths (int frameNr, vector<GTEntry>& gts)
     gts = groundTruths.at(frameNr);
 }
 
-string TMEMotorwayProcessor::getGrountTruthFilename ()
+string TMEMotorwayProcessor::getGroundTruthFilename ()
 {
     string lightingSubset = (sequenceType == DAYLIGHT) ? "Daylight" : "Sunset";
     string gtFilename = datasetPath + "ITSC2012gt-" + lightingSubset + ".txt";

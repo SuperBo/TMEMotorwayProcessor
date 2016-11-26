@@ -133,7 +133,7 @@ public:
     void getGroundTruths (vector<GTEntry>& groundTruths);
     void getGroundTruths (int frame, vector<GTEntry>& groundTruths);
 
-    string getGrountTruthFilename ();
+    string getGroundTruthFilename ();
     string getImageDirectory ();
     string getImageName();
     int getImageIndex ();
