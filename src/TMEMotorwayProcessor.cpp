@@ -262,11 +262,9 @@ void TMEMotorwayProcessor::readFrame(cv::Mat &image, vector<GTEntry> &gts)
 
 void TMEMotorwayProcessor::readNextFrame(cv::Mat &image, vector<GTEntry> &gts)
 {
-    assert(currentFrame >= -1);
     currentFrame++;
 
-    image = cv::imread(imageFiles[currentFrame], cv::IMREAD_COLOR);
-    getGroundTruths(getImageIndex(imageFiles[currentFrame]), gts);
+    TMEMotorwayProcessor::readFrame(image, gts);
 }
 
 bool TMEMotorwayProcessor::isInitialized()
