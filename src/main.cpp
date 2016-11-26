@@ -32,8 +32,8 @@ void showFrames (TMEMotorwayProcessor& processor)
 
     while (processor.hasNextFrame()) {
 
-        // Read frame from sequence
-        processor.readFrame(image, gts);
+        // Read next frame from sequence
+        processor.readNextFrame(image, gts);
 
         // Draw ground truth bounding boxes
         // Note that the first ~100 frames are not annotated.
@@ -56,7 +56,7 @@ void showFrames (TMEMotorwayProcessor& processor)
 int main(int argc, const char * argv[]) {
 
     // Full path to the location of your TME Motorway Dataset
-    string datasetPath = "../data/";
+    string datasetPath = "./data/";
 
     // Choose a sequence type (Daylight/Sunset) and a sequence number
     SequenceType sequenceType = DAYLIGHT;

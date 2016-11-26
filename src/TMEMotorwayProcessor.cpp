@@ -31,7 +31,7 @@ void TMEMotorwayProcessor::initSequence(const SequenceType &_sequenceType, const
     // Read ground truth annotations from file and convert the bounding boxes to screen coordinates
     readGroundTruths();
 
-    currentFrame = 0; // Ground truths are available from frame 80
+    currentFrame = -1; // Ground truths are available from frame 80
 }
 
 void TMEMotorwayProcessor::readCalibrationParameters(const string &calibrationFile)
@@ -262,6 +262,15 @@ void TMEMotorwayProcessor::readFrame(cv::Mat &image, vector<GTEntry> &gts)
     currentFrame++;
 }
 
+void TMEMotorwayProcessor::readNextFrame(cv::Mat &image, vector<GTEntry> &gts)
+{
+    assert(currentFrame >= -1);
+    currentFrame++;
+
+    image = cv::imread(imageFiles[currentFrame], cv::IMREAD_COLOR);
+    getGroundTruths(getImageIndex(imageFiles[currentFrame]), gts);
+}
+
 bool TMEMotorwayProcessor::isInitialized()
 {
     if (imageFiles.empty() || groundTruths.empty()) return false;
@@ -271,8 +280,17 @@ bool TMEMotorwayProcessor::isInitialized()
 
 bool TMEMotorwayProcessor::hasNextFrame ()
 {
-    if (currentFrame < imageFiles.size()) return true;
-    return false;
+    return (currentFrame < (int) imageFiles.size() - 1);
+}
+
+void TMEMotorwayProcessor::nextFrame()
+{
+    currentFrame++;
+}
+
+void TMEMotorwayProcessor::resetFrame()
+{
+    currentFrame = -1;
 }
 
 void TMEMotorwayProcessor::jumpToFrame(int frame)

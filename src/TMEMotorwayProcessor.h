@@ -138,8 +138,11 @@ public:
 
     void show(int delay = 5);
     void readFrame(cv::Mat& image, vector<GTEntry>& gts);
+    void readNextFrame(cv::Mat& image, vector<GTEntry>& gts);
     void jumpToFrame (int frame);
     bool hasNextFrame();
+    void nextFrame();
+    void resetFrame();
     bool isInitialized();
 
     void computeScreenCoordinates ();
