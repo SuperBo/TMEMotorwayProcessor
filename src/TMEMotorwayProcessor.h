@@ -76,25 +76,25 @@ struct GTEntry
     unsigned long ID;
     cv::Point2d wp0;        // World coordinate
     cv::Point2d wp1;        // World coordinate
-    
+
     bool reconstructed;     // Sample was not detected at this frame, but interpolated from previous and successive detection
     double estimatedWidth;  // Estimated across all the observation time of this target
-    
+
     // Variables computed from the static calibration
     cv::Point2d ip0;        // Screen coordinates
     cv::Point2d ip1;        // Screen coordinates
-    
+
     bool truncated;
     bool occluded;
     bool truck;
-    
+
     inline double assignedHeight()  const { return (estimatedWidth > CAR_TRUCK_WIDTH_BOUNDARY_TH) ? TRUCK_HEIGHT : CAR_HEIGHT; }
     inline double meterWidth()      const { return (wp1.y - wp0.y); }
     inline double pixelWidth()      const { return (ip1.x - ip0.x); }
     inline double pixelHeight()     const { return (ip1.y - ip0.y); }
     inline double ImageArea()       const { return pixelWidth() * pixelHeight(); }
     inline bool isTruck ()          const { return (estimatedWidth > CAR_TRUCK_WIDTH_BOUNDARY_TH) ? true : false; }
-    
+
     inline double meterToPixel() const
     {
         if (meterWidth())
@@ -102,7 +102,7 @@ struct GTEntry
         else
             return 0.0;
     }
-    
+
     inline double PixelToMeter() const
     {
         if (pixelWidth())
@@ -110,7 +110,7 @@ struct GTEntry
         else
             return 0.0;
     }
-    
+
     void print ()
     {
         printf("ID = %i\n", (int)ID);
@@ -126,41 +126,41 @@ class TMEMotorwayProcessor
 public:
     TMEMotorwayProcessor ();
     TMEMotorwayProcessor(const string& _datasetPath);
-    
+
     void initSequence (const SequenceType& _sequenceType, const string& _sequence);
     void readCalibrationParameters (const string& calibrationFile = "calibration.ini");
     void readGroundTruths ();
     void getGroundTruths (int frame, vector<GTEntry>& groundTruths);
-    
+
     string getGrountTruthFilename ();
     string getImageDirectory ();
     int getImageIndex (const string& imFilename);
-    
+
     void show(int delay = 5);
     void readFrame(cv::Mat& image, vector<GTEntry>& gts);
     void jumpToFrame (int frame);
     bool hasNextFrame();
     bool isInitialized();
-    
+
     void computeScreenCoordinates ();
     double computeBoundingBoxOverlap (const GTEntry& gt1, const GTEntry& gt2);
     bool isOccluded (const GTEntry& gt, const vector<GTEntry>& otherGts);
-    
+
     void convertImagesToRGB (const string& directory);
-    
+
 private:
     string datasetPath;
     string sequence;
     SequenceType sequenceType;
     CalibrationParameters calibration;
-    
+
     // This map stores ground truths for each frame (key = frame number)
     map<int, vector<GTEntry>> groundTruths;
-    
+
     // List of images in the stream
     vector<string> imageFiles;
     int currentFrame;
-    
+
 };
 
 #endif /* defined(__TMEMotorwayProcessor__TMEMotorwayProcessor__) */

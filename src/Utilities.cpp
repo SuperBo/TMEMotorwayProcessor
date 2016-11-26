@@ -12,7 +12,7 @@ namespace utilities
     //*************************************************************//
     //****************** GENERAL HELPER METHODS *******************//
     //*************************************************************//
-    
+
     // Get current date/time "YYYY-MM-DD HH:mm:ss"
     string currentDateTime()
     {
@@ -23,7 +23,7 @@ namespace utilities
         strftime(buf, sizeof(buf), "%Y-%m-%d_%X", &tstruct);
         return string(buf);
     }
-    
+
     string toLowerCase(const string& inputString)
     {
         string t;
@@ -32,14 +32,14 @@ namespace utilities
         }
         return t;
     }
-    
+
     string getFilename(const string& fullPath)
     {
         unsigned pos = (unsigned)fullPath.find_last_of("/\\");
         string filename = fullPath.substr(pos+1);
         return filename;
     }
-    
+
     string getFilenameWithoutExtension(const string& fullPath)
     {
         string withExtension = getFilename(fullPath);
@@ -47,13 +47,13 @@ namespace utilities
         if (lastDot == string::npos) return fullPath;
         return withExtension.substr(0, lastDot);
     }
-    
+
     void getFilesInDirectory(const string& directory, vector<string>& fileNames, const vector<string>& validExtensions)
     {
         struct dirent* ep;
         size_t extensionLocation;
         DIR* dp = opendir(directory.c_str());
-        
+
         if (dp != NULL) {
             while ((ep = readdir(dp))) {
                 // Ignore (sub-)directories like
@@ -63,7 +63,7 @@ namespace utilities
                 extensionLocation = string(ep->d_name).find_last_of("."); // Assume the last point marks beginning of extension like file.ext
                 // Check if extension is matching the wanted ones
                 string tempExt = toLowerCase(string(ep->d_name).substr(extensionLocation + 1));
-                
+
                 // Check for matching file
                 if (find(validExtensions.begin(), validExtensions.end(), tempExt) != validExtensions.end()) {
                     fileNames.push_back((string)directory + ep->d_name);
@@ -74,7 +74,7 @@ namespace utilities
         // Make sture the filenames are sorted
         sort(fileNames.begin(), fileNames.end());
     }
-    
+
     void getFilesInDirectory(const string& directory, vector<string>& fileNames, const string& validExtension)
     {
         getFilesInDirectory(directory, fileNames, vector<string>{validExtension});
