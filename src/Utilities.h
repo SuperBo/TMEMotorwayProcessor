@@ -14,6 +14,7 @@
 #include <sstream>
 #include <dirent.h>
 
+#include <algorithm>
 #include <vector>
 #include <map>
 #include <list>
