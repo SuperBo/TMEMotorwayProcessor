@@ -130,10 +130,13 @@ public:
     void initSequence (const SequenceType& _sequenceType, const string& _sequence);
     void readCalibrationParameters (const string& calibrationFile = "calibration.ini");
     void readGroundTruths ();
+    void getGroundTruths (vector<GTEntry>& groundTruths);
     void getGroundTruths (int frame, vector<GTEntry>& groundTruths);
 
     string getGrountTruthFilename ();
     string getImageDirectory ();
+    string getImageName();
+    int getImageIndex ();
     int getImageIndex (const string& imFilename);
 
     void show(int delay = 5);

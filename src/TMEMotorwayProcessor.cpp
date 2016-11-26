@@ -294,6 +294,16 @@ void TMEMotorwayProcessor::jumpToFrame(int frame)
     currentFrame = frame;
 }
 
+string TMEMotorwayProcessor::getImageName()
+{
+    return imageFiles[currentFrame];
+}
+
+void TMEMotorwayProcessor::getGroundTruths(vector<GTEntry>& gts)
+{
+    getGroundTruths(getImageIndex(), gts);
+}
+
 void TMEMotorwayProcessor::getGroundTruths (int frameNr, vector<GTEntry>& gts)
 {
     gts.clear();
@@ -314,6 +324,11 @@ string TMEMotorwayProcessor::getImageDirectory ()
     string lightingSubset = (sequenceType == DAYLIGHT) ? "Daylight" : "Sunset";
     string imagePath = datasetPath + lightingSubset + "/" + sequence + "/Right/";
     return imagePath;
+}
+
+int TMEMotorwayProcessor::getImageIndex()
+{
+    return getImageIndex(getImageName());
 }
 
 int TMEMotorwayProcessor::getImageIndex (const string& imFilename)
