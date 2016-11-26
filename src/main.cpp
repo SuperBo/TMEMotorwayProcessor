@@ -16,7 +16,7 @@ void convertImagesToRGB (TMEMotorwayProcessor& processor, const string& datasetP
     // Daylight: 08 11 12 16 17 18 32 35 42
     // Sunset:   12 16 20 46
 
-    processor.convertImagesToRGB(datasetPath + "Daylight/tme08/Right/");
+    processor.convertImagesToRGB(datasetPath + "tme08/Right/");
     // ... add other directories if you want.
 }
 
@@ -56,15 +56,14 @@ void showFrames (TMEMotorwayProcessor& processor)
 int main(int argc, const char * argv[]) {
 
     // Full path to the location of your TME Motorway Dataset
-    string datasetPath = "./data/";
+    string datasetPath = "data/Daylight";
 
     // Choose a sequence type (Daylight/Sunset) and a sequence number
-    SequenceType sequenceType = DAYLIGHT;
     string sequence = "tme08";
 
     // Initialize data processor
     TMEMotorwayProcessor processor(datasetPath);
-    processor.initSequence(sequenceType, sequence);
+    processor.initSequence(sequence);
 
     // Show the images + ground truth bounding boxes
     showFrames(processor);

@@ -9,7 +9,12 @@
 
 TMEMotorwayProcessor::TMEMotorwayProcessor(const string& _datasetPath)
 {
-    datasetPath = _datasetPath;
+    datasetPath = _datasetPath + "/";
+}
+
+void TMEMotorwayProcessor::initSequence(const string& _sequence)
+{
+    initSequence(DAYLIGHT, _sequence);
 }
 
 void TMEMotorwayProcessor::initSequence(const SequenceType &_sequenceType, const string &_sequence)
@@ -314,15 +319,17 @@ void TMEMotorwayProcessor::getGroundTruths (int frameNr, vector<GTEntry>& gts)
 
 string TMEMotorwayProcessor::getGroundTruthFilename ()
 {
-    string lightingSubset = (sequenceType == DAYLIGHT) ? "Daylight" : "Sunset";
-    string gtFilename = datasetPath + "ITSC2012gt-" + lightingSubset + ".txt";
-    return gtFilename;
+    //string lightingSubset = (sequenceType == DAYLIGHT) ? "Daylight" : "Sunset";
+    //string gtFilename = datasetPath + "ITSC2012gt-" + lightingSubset + ".txt";
+    //return gtFilename;
+    return (datasetPath + "ITSC2012gt.txt");
 }
 
 string TMEMotorwayProcessor::getImageDirectory ()
 {
-    string lightingSubset = (sequenceType == DAYLIGHT) ? "Daylight" : "Sunset";
-    string imagePath = datasetPath + lightingSubset + "/" + sequence + "/Right/";
+    //string lightingSubset = (sequenceType == DAYLIGHT) ? "Daylight" : "Sunset";
+    //string imagePath = datasetPath + lightingSubset + "/" + sequence + "/Right/";
+    string imagePath = datasetPath + sequence + "/Right/";
     return imagePath;
 }
 
