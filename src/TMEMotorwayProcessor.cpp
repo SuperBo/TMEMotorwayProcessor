@@ -258,8 +258,6 @@ void TMEMotorwayProcessor::readFrame(cv::Mat &image, vector<GTEntry> &gts)
 
     image = cv::imread(imageFiles[currentFrame], cv::IMREAD_COLOR);
     getGroundTruths(getImageIndex(imageFiles[currentFrame]), gts);
-
-    currentFrame++;
 }
 
 void TMEMotorwayProcessor::readNextFrame(cv::Mat &image, vector<GTEntry> &gts)
