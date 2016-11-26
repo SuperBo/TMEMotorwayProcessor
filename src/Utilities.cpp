@@ -79,4 +79,26 @@ namespace utilities
     {
         getFilesInDirectory(directory, fileNames, vector<string>{validExtension});
     }
+
+    void getFoldersInDirectory(const string& directory, vector<string>& folderNames, const string& prefix)
+    {
+        int pre_len = prefix.length();
+        const char* pre_str = prefix.c_str();
+
+        struct dirent* entry;
+        DIR* dir = opendir(directory.c_str());
+
+        folderNames.clear();
+
+        while ((entry = readdir(dir)) != NULL) {
+            if (entry->d_type == DT_DIR && entry->d_name[0] != '.' &&
+                    strncmp(entry->d_name, pre_str, pre_len) == 0) {
+                folderNames.push_back(string(entry->d_name));
+            }
+        }
+        closedir(dir);
+
+        // Sort Folder Name
+        sort(folderNames.begin(), folderNames.end());
+    }
 }

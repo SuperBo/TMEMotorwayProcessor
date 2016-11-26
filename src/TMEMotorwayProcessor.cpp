@@ -39,6 +39,11 @@ void TMEMotorwayProcessor::initSequence(const SequenceType &_sequenceType, const
     currentFrame = -1; // Ground truths are available from frame 80
 }
 
+void TMEMotorwayProcessor::getSequences(vector<string>& seqs)
+{
+    getFoldersInDirectory(datasetPath, seqs, "tme");
+}
+
 void TMEMotorwayProcessor::readCalibrationParameters(const string &calibrationFile)
 {
     // Since there is only one calibration file, for now just use hard coded values.

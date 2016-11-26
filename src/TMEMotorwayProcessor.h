@@ -129,6 +129,7 @@ public:
 
     void initSequence (const SequenceType& _sequenceType, const string& _sequence);
     void initSequence (const string& _sequence);
+    void getSequences (vector<string>& seqs);
     void readCalibrationParameters (const string& calibrationFile = "calibration.ini");
     void readGroundTruths ();
     void getGroundTruths (vector<GTEntry>& groundTruths);

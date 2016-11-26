@@ -19,6 +19,7 @@
 #include <map>
 #include <list>
 #include <string>
+#include <cstring>
 #include <unistd.h>
 
 using namespace std;
@@ -33,6 +34,7 @@ namespace utilities
     string getFilenameWithoutExtension(const string& fullPath);
     void getFilesInDirectory(const string& directory, vector<string>& fileNames, const vector<string>& validExtensions);
     void getFilesInDirectory(const string& directory, vector<string>& fileNames, const string& validExtension);
+    void getFoldersInDirectory(const string& directory, vector<string>& folderNames, const string& prefix);
 }
 
 #endif
