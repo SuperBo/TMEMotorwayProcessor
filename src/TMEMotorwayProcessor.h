@@ -56,7 +56,7 @@ enum SequenceType
 
 enum CameraType
 {
-	RIGHT, LEFT
+    RIGHT, LEFT
 };
 
 struct CalibrationParameters
