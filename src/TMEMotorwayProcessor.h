@@ -54,6 +54,11 @@ enum SequenceType
     SUNSET
 };
 
+enum CameraType
+{
+	RIGHT, LEFT
+};
+
 struct CalibrationParameters
 {
     double x;
@@ -125,10 +130,10 @@ class TMEMotorwayProcessor
 {
 public:
     TMEMotorwayProcessor ();
-    TMEMotorwayProcessor(const string& _datasetPath);
+    TMEMotorwayProcessor (const string& _datasetPath);
 
-    void initSequence (const SequenceType& _sequenceType, const string& _sequence);
     void initSequence (const string& _sequence);
+    void initSequence (const CameraType& _cameraType, const string& _sequence);
     void getSequences (vector<string>& seqs);
     void readCalibrationParameters (const string& calibrationFile = "calibration.ini");
     void readGroundTruths ();
@@ -159,7 +164,8 @@ public:
 private:
     string datasetPath;
     string sequence;
-    SequenceType sequenceType;
+    //SequenceType sequenceType;
+    CameraType cameraType;
     CalibrationParameters calibration;
 
     // This map stores ground truths for each frame (key = frame number)

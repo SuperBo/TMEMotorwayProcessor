@@ -52,22 +52,25 @@ int processData(TMEMotorwayProcessor& processor) {
     }
 
     vector<GTEntry> gts;
+    CameraType cams[2] = {RIGHT, LEFT};
     for (const string& sequence: sequences) {
-        processor.initSequence(sequence);
-        if (!processor.isInitialized())
-            continue;
+        for (int i = 0; i < 2; i++) {
+            processor.initSequence(cams[i], sequence);
+            if (!processor.isInitialized())
+                continue;
 
-        while (processor.hasNextFrame()) {
-            processor.nextFrame();
+            while (processor.hasNextFrame()) {
+                processor.nextFrame();
 
-            processor.getGroundTruths(gts);
-            string imgfile = processor.getImageName();
-            string txtfile = anno_path + '/' + getFilenameWithoutExtension(imgfile) + ".txt";
+                processor.getGroundTruths(gts);
+                string imgfile = processor.getImageName();
+                string txtfile = anno_path + '/' + getFilenameWithoutExtension(imgfile) + ".txt";
 
-            cout << "Processing " << imgfile << endl;
-            bool status = createTxtAnno(txtfile, gts);
-            if (status) {
-                listfile << imgfile << ' ' << txtfile << endl;
+                cout << "Processing " << imgfile << endl;
+                bool status = createTxtAnno(txtfile, gts);
+                if (status) {
+                    listfile << imgfile << ' ' << txtfile << endl;
+                }
             }
         }
     }
@@ -93,7 +96,7 @@ int main(int argc, char* argv[]) {
 
     int status = processData(processor);
     if (status == 0)
-        cout << endl << "Finished Successfully!" << endl;
+        cout << "-------------------" << endl << "Finished Successfully!" << endl;
 
     return status;
 }

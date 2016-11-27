@@ -14,13 +14,14 @@ TMEMotorwayProcessor::TMEMotorwayProcessor(const string& _datasetPath)
 
 void TMEMotorwayProcessor::initSequence(const string& _sequence)
 {
-    initSequence(DAYLIGHT, _sequence);
+    initSequence(RIGHT, _sequence);
 }
 
-void TMEMotorwayProcessor::initSequence(const SequenceType &_sequenceType, const string &_sequence)
+void TMEMotorwayProcessor::initSequence(const CameraType& _cameraType, const string& _sequence)
 {
-    sequenceType =  _sequenceType;
-    sequence =      _sequence;
+    //sequenceType =  _sequenceType;
+    cameraType =    _cameraType;
+    sequence   =    _sequence;
 
     string imageDirectory = getImageDirectory();
     getFilesInDirectory(imageDirectory, imageFiles, "png");
@@ -334,8 +335,8 @@ string TMEMotorwayProcessor::getImageDirectory ()
 {
     //string lightingSubset = (sequenceType == DAYLIGHT) ? "Daylight" : "Sunset";
     //string imagePath = datasetPath + lightingSubset + "/" + sequence + "/Right/";
-    string imagePath = datasetPath + sequence + "/Right/";
-    return imagePath;
+    string camPath = (cameraType == RIGHT) ? "/Right/" : "/Left/";
+    return (datasetPath + sequence + camPath);
 }
 
 int TMEMotorwayProcessor::getImageIndex()
